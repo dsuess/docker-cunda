@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# original docker push command
+echo "overwriting docker push $IMAGE_NAME"
+
+cat "cuda_versions.txt" | while read CUDA_VERSION
+do
+    if [ -z "$DOCKER_TAG" ]; then
+        IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}"
+    else
+        IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}-${DOCKER_TAG}"
+    fi
+
+    echo "docker push ${IMAGE_TAG}"
+    docker push ${IMAGE_TAG}
+done
