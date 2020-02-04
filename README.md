@@ -7,7 +7,7 @@ Docker-CUDA-Conda
 Based on `nvidia/cuda` base image with conda preinstalled and `cudatoolkit` pre-cached in conda.
 Currently supported versions are:
 
-| CUDA Version  | Docker Image                  |
-| ------------- |:-----------------------------:|
-| 10.1          | dseuss/cuda-conda:10.1-latest |
-| 10.2          | dseuss/cuda-conda:10.2-latest |
+| CUDA Tag                      |
+| ----------------------------- |
+| 10.1-runtime                  |
+| 10.1-cudnn7-devel-ubuntu18.04  |

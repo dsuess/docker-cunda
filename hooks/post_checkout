@@ -1,16 +1,9 @@
 #!/bin/bash
 
 # original docker push command
-echo "overwriting docker push $IMAGE_NAME"
-
-cat "cuda_versions.txt" | while read CUDA_VERSION
+cat "cuda_tags.txt" | while read CUDA_TAG
 do
-    if [ -z "$DOCKER_TAG" ]; then
-        IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}"
-    else
-        IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}-${DOCKER_TAG}"
-    fi
-
+    IMAGE_TAG="nvidia/cuda:${CUDA_TAG}"
     echo "docker pull ${IMAGE_TAG}"
     docker pull ${IMAGE_TAG}
 done

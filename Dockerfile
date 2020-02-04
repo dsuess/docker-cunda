@@ -1,5 +1,6 @@
-ARG CUDA_VERSION=10.1
-FROM nvidia/cuda:${CUDA_VERSION}-base
+ARG CUDA_TAG=10.1-base
+FROM nvidia/cuda:${CUDA_TAG}
+
 LABEL maintainer "Daniel Suess <daniel@dsuess.me>"
 
 RUN apt-get update \
@@ -11,7 +12,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
 ENV PATH=/opt/conda/bin:$PATH
 
+ARG CUDA_VERSION=10.1
 RUN conda install --download-only cudatoolkit="${CUDA_VERSION}"

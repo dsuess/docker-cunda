@@ -3,13 +3,10 @@
 # original docker build command
 echo "overwriting docker build -f $DOCKERFILE_PATH -t $IMAGE_NAME ."
 
-cat "cuda_versions.txt" | while read CUDA_VERSION
+cat "cuda_tags.txt" | while read CUDA_TAG
 do
-        if [ -z "$DOCKER_TAG" ]; then
-            IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}"
-        else
-            IMAGE_TAG="${DOCKER_REPO}:${CUDA_VERSION}-${DOCKER_TAG}"
-        fi
+        IMAGE_TAG="${DOCKER_REPO}:${CUDA_TAG}"
+        CUDA_VERSION="$(cut -d'-' -f1 <<< $CUDA_TAG)"
         echo "docker build -f $DOCKERFILE_PATH --build-arg CUDA_VERSION=${CUDA_VERSION} -t ${IMAGE_TAG} ."
         docker build -f "$DOCKERFILE_PATH" --build-arg CUDA_VERSION="${CUDA_VERSION}" -t "${IMAGE_TAG}" .
 done
