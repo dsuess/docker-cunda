@@ -11,3 +11,5 @@ Currently supported versions are:
 | ----------------------------- |
 | 10.1-runtime                  |
 | 10.1-cudnn7-devel-ubuntu18.04  |
+
+If you need more, just submit a PR editing the [`cuda_tags.txt`](https://github.com/dsuess/docker-cunda/blob/master/cuda_tags.txt) file.

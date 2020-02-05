@@ -8,5 +8,5 @@ do
         IMAGE_TAG="${DOCKER_REPO}:${CUDA_TAG}"
         CUDA_VERSION="$(cut -d'-' -f1 <<< $CUDA_TAG)"
         echo "docker build -f $DOCKERFILE_PATH --build-arg CUDA_VERSION=${CUDA_VERSION} -t ${IMAGE_TAG} ."
-        docker build -f "$DOCKERFILE_PATH" --build-arg CUDA_VERSION="${CUDA_TAG}" --build-arg CUDA_VERSION="${CUDA_VERSION}" -t "${IMAGE_TAG}" .
+        docker build -f "$DOCKERFILE_PATH" --build-arg CUDA_TAG="${CUDA_TAG}" --build-arg CUDA_VERSION="${CUDA_VERSION}" -t "${IMAGE_TAG}" .
 done
