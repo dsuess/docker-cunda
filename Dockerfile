@@ -1,5 +1,8 @@
-ARG CUDA_TAG=10.1-base
-FROM nvidia/cuda:${CUDA_TAG}
+ARG CUDA_BUILD_TAG=UNDEFINED
+FROM nvidia/cuda:${CUDA_BUILD_TAG}
+
+ARG CUDA_BUILD_TAG=UNDEFINED
+RUN echo "****** Building ${CUDA_BUILD_TAG} / ${CUDA_VERSION} ******"
 
 LABEL maintainer "Daniel Suess <daniel@dsuess.me>"
 
@@ -14,5 +17,4 @@ RUN apt-get update \
 
 ENV PATH=/opt/conda/bin:$PATH
 
-ARG CUDA_VERSION=10.1
 RUN conda install --download-only cudatoolkit="${CUDA_VERSION}"
