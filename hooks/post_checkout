@@ -6,4 +6,10 @@ do
     IMAGE_TAG="nvidia/cuda:${CUDA_TAG}"
     echo "docker pull ${IMAGE_TAG}"
     docker pull ${IMAGE_TAG}
+
+    IMAGE_TAG="${DOCKER_REPO}:${CUDA_TAG}"
+    echo "docker pull ${IMAGE_TAG}"
+    docker pull ${IMAGE_TAG}
 done
+
+exit 0
