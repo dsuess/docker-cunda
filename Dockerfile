@@ -17,4 +17,5 @@ RUN apt-get update \
 
 ENV PATH=/opt/conda/bin:$PATH
 
-RUN conda install --download-only cudatoolkit="${CUDA_VERSION}"
+RUN conda install --download-only cudatoolkit="${CUDA_VERSION}" \
+    && conda clean -t -i -l
